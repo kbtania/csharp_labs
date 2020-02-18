@@ -13,10 +13,7 @@ namespace lab4_task2
             Console.Write("c = ");
             int c = Convert.ToInt32(Console.ReadLine());
             if (a < 9 && a > 3 || a > b && a < c)
-
                 Console.WriteLine("Yes");
-            
-
             else
                 Console.WriteLine("No");
             
