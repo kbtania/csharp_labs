@@ -28,13 +28,9 @@ namespace lab4_task
             double cosC = (Math.Pow(a, 2) + Math.Pow(c, 2) - Math.Pow(b, 2)) / (2 * a * c);
 
             if (cosA < 0 || cosB < 0 || cosC < 0)
-            {
                 Console.WriteLine("Тупокутний");
-            }
             else
-            {
                 Console.WriteLine("Не тупокутний");
-            }
         }
     }
 }
