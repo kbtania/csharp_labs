@@ -21,10 +21,8 @@ namespace lab6_task2
                 double element = numerator / denominator;
                 if (element > 0)
                     sumPositive++;
-
                 else
                     sumNegative++;
-
                 if (x < i)
                     arr[x - 1] = element;
             }
@@ -34,8 +32,6 @@ namespace lab6_task2
                 Console.WriteLine(-1);
             else
                 Console.WriteLine(1);
-
-
         }
     }  
 }
