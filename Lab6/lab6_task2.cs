@@ -28,7 +28,6 @@ namespace lab6_task2
             }
 
             if (sumNegative < sumPositive)
-
                 Console.WriteLine(-1);
             else
                 Console.WriteLine(1);
