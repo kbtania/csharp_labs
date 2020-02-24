@@ -24,11 +24,7 @@ namespace lab6_task4
                     resArray[j++] = numArray[i];
             }
             foreach (double element in resArray)
-            {
                 Console.Write("{0};  ", element);
-
-            }
-
         }
     }
 }
