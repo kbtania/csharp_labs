@@ -14,7 +14,6 @@ namespace lab6_task1
             {
                 Console.Write("Element[{0}] = ", i);
                 numbers[i] = Convert.ToInt32(Console.ReadLine());
-
             }
             Console.WriteLine(numbers.Min());
         }
