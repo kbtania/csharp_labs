@@ -15,15 +15,7 @@ namespace lab6_task1
                 numbers[i] = Convert.ToInt32(Console.ReadLine());
 
             }
-            int minim = numbers[0];
-            foreach (int num in numbers)
-            {
-                if (num < minim)
-                {
-                    minim = num;
-                }
-            }
-            Console.WriteLine("The smallest number is = {0}", minim);
+            Console.WriteLine(numbers.Min());
         }
     }
 }
