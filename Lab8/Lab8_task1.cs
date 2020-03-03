@@ -24,10 +24,10 @@ namespace ConsoleApp1
                     a = Math.Cos(a);
                     z = -z;
                 }
-
                 return s;
             }
         }
+        
         static void Main(string[] args)
         {
             Console.Write("a = ");
