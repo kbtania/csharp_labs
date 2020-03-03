@@ -22,6 +22,7 @@ namespace ConsoleApp2
                 resVector[i] = vector1[i] - vector2[i];
             return resVector;
         }
+        
         static int[] VectorMultiplyByNumber(int[] vector, int number)
         {
             for (int i = 0; i < vector.Length; i++)
