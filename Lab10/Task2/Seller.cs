@@ -42,8 +42,7 @@ namespace Lab10Task2
             
         }
         
-        
-        
+            
         public override string ToString()
         {
             return $"{name}-{foundation}-{phoneNumber}-{productionVolume}";
