@@ -12,10 +12,11 @@ namespace Lab10Task1
                 int number = Convert.ToInt32(Console.ReadLine());
                 Number n = new Number(number);
 
-                Console.WriteLine($"The number: {n.ToString()}");
+                Console.WriteLine($"The number: {n.ToString()}"); // string output of an object
                 Console.WriteLine($"Count of digits: {n.CountOfNums()}");
                 Console.WriteLine($"Sum of digits: {n.SumOfDigits()}");
             }
+            
             catch
             {
                 Console.WriteLine("Number must be positive integer.");
