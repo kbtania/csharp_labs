@@ -44,6 +44,5 @@ namespace Lab10Task1
             return sum;
         }
     }
-
 }
 
