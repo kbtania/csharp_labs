@@ -46,9 +46,6 @@ namespace Lab10Task2
         {
             return $"Name: {name}\r\nFoundation: {foundation}\r\n" +
                    $"Phone Number: {phoneNumber}\r\nProduction Volume: {productionVolume}";
-        }
-        
-        
-        
+        }  
     }
 }
