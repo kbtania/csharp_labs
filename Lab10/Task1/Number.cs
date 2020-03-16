@@ -40,7 +40,6 @@ namespace Lab10Task1
                 sum += num % 10;
                 num /= 10;
             }
-
             return sum;
         }
     }
