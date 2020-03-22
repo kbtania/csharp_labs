@@ -131,13 +131,10 @@ namespace Lab11
             return a + b + c;
         }
         
-        //Comparing triangles
-        public bool Compare(double newA, double newB, double newC)
+        // Comparing triangles
+        public static bool operator ==(Triangle tr1, Triangle tr2)
         {
-            if (a == newA && b == newB && c == newC)
-                return true;
-            else
-                return false;
+            return tr1.a == tr2.a && tr1.b == tr2.b && tr1.c == tr2.c;
         }
         
         // Overloading +
