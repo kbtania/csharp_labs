@@ -31,7 +31,7 @@ namespace Lab11
                 double num = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine($"S = {tr1.Area()}");
                 Console.WriteLine($"P = {tr1.Perimeter()}");
-                if (t1 == tr2)
+                if (tr1 == tr2)
                     Console.WriteLine("Equal");
                 else
                     Console.WruteLine("Not equal");
