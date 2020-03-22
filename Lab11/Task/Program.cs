@@ -15,7 +15,10 @@ namespace Lab11
                 double num = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine($"S = {tr1.Area()}");
                 Console.WriteLine($"P = {tr1.Perimeter()}");
-                Console.WriteLine($"Triangle with sides {tr2} is equal to {tr1}: {tr1.Compare(tr2.A, tr2.B, tr2.C)}");
+                if (t1 == tr2)
+                    Console.WriteLine("Equal");
+                else
+                    Console.WruteLine("Not equal");
                 
                 Console.WriteLine($"Added {num}: {tr1 + num}");
                 Console.WriteLine($"Multiplied {num}: {tr1 * num}");
