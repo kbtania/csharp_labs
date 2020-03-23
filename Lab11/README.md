@@ -137,6 +137,11 @@ namespace Lab11
             return tr1.a == tr2.a && tr1.b == tr2.b && tr1.c == tr2.c;
         }
         
+        public static bool operator !=(Triangle tr1, Triangle tr2)
+        {
+            return !(tr1 == tr2);
+        }
+        
         // Overloading +
         public static Triangle operator +(Triangle triangle, double num)
         {
