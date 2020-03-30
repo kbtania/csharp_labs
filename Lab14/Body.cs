@@ -25,8 +25,5 @@ namespace Lab14
         public abstract double Area();
 
         public abstract double Volume();
-
-
-
     }
 }
