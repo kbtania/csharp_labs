@@ -22,7 +22,7 @@ namespace Module
             H = h;
         }
 
-        // площа повної поверхні
+        // surface area
         public new double Area()
         {
             return Perimeter() * h * 2 * base.Area();
