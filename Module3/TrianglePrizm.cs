@@ -56,7 +56,8 @@ namespace Module
 
         public static bool operator ==(TrianglePrizm trpr1, TrianglePrizm trpr2)
         {
-            return (Math.Abs(trpr1.a - trpr2.a) < EPSILON && Math.Abs(trpr1.b - trpr2.b) < EPSILON && Math.Abs(trpr1.c - trpr2.c) < EPSILON && Math.Abs(trpr1.h-trpr2.h)<EPSILON);
+            return (Math.Abs(trpr1.a - trpr2.a) < EPSILON && Math.Abs(trpr1.b - trpr2.b) < EPSILON && 
+            Math.Abs(trpr1.c - trpr2.c) < EPSILON && Math.Abs(trpr1.h-trpr2.h)<EPSILON);
         }
 
         public static bool operator !=(TrianglePrizm trpr1, TrianglePrizm trpr2)
