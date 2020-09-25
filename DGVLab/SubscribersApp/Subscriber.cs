@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace SubscribersApp
 {
@@ -13,6 +14,16 @@ namespace SubscribersApp
         public int Number { get; set; }
         public int Year { get; set; }
         public bool Debt { get; set; }
+
+        public Subscriber(XmlElement element)
+        {
+            Subscriber sub = Subscriber.FromXmlElement(element);
+            Name = sub.Name;
+            Number = sub.Number;
+            Year = sub.Year;
+            Debt = sub.Debt;
+
+        }
         public Subscriber(string name, int number, int year, bool debt)
         {
             Name = name;
@@ -20,9 +31,31 @@ namespace SubscribersApp
             Year = year;
             Debt = debt;
         }
+
+        // returns Xml based on object
+        public XmlElement ToXmlElement(XmlDocument doc) 
+        {
+            XmlElement subscriber = doc.CreateElement("subscriber");
+            subscriber.InnerText = Name;
+            subscriber.SetAttribute("number", Number.ToString());
+            subscriber.SetAttribute("startYear", Year.ToString());
+            subscriber.SetAttribute("debt", Debt.ToString().ToLower());
+            return subscriber;
+        }
+
+        // returns object based on Xml
+        public static Subscriber FromXmlElement(XmlElement element)      
+        {
+            string name = element.InnerText;
+            int number = Convert.ToInt32(element.GetAttribute("number"));
+            int startYear = Convert.ToInt32(element.GetAttribute("startYear"));
+            bool debt = Convert.ToBoolean(element.GetAttribute("debt").ToLower());
+            return new Subscriber(name, number, startYear, debt);
+        }
+
         public override string ToString()
         {
-            return $"{this.Name}  {this.Number}  {this.Year}";
+            return $"{Name}  {Number}  {Year}";
         }
     }
 }
