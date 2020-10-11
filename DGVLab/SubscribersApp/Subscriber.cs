@@ -1,9 +1,12 @@
-﻿using System;
+﻿//using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+
+
 
 namespace SubscribersApp
 {
@@ -15,6 +18,14 @@ namespace SubscribersApp
         public int Year { get; set; }
         public bool Debt { get; set; }
 
+        public Subscriber(string name, int number, int year, bool debt)
+        {
+            Name = name;
+            Number = number;
+            Year = year;
+            Debt = debt;
+        }
+
         public Subscriber(XmlElement element)
         {
             Subscriber sub = Subscriber.FromXmlElement(element);
@@ -22,14 +33,6 @@ namespace SubscribersApp
             Number = sub.Number;
             Year = sub.Year;
             Debt = sub.Debt;
-
-        }
-        public Subscriber(string name, int number, int year, bool debt)
-        {
-            Name = name;
-            Number = number;
-            Year = year;
-            Debt = debt;
         }
 
         // returns Xml based on object
@@ -43,7 +46,7 @@ namespace SubscribersApp
             return subscriber;
         }
 
-        // returns object based on Xml
+        // returns Object based on Xml
         public static Subscriber FromXmlElement(XmlElement element)      
         {
             string name = element.InnerText;

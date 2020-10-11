@@ -10,6 +10,11 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
+//using System.Text.Json;
+using System.Runtime.Serialization.Json;
+//using Newtonsoft.Json;
+
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace SubscribersApp
 {
@@ -25,9 +30,9 @@ namespace SubscribersApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SubscribersList = new List<Subscriber>(); 
-            BindSource = new BindingSource(); 
-            BindSource.DataSource = SubscribersList; 
+            SubscribersList = new List<Subscriber>();
+            BindSource = new BindingSource();
+            BindSource.DataSource = SubscribersList;
             dataGridView1.DataSource = BindSource;
             dataGridView1.Columns["Name"].HeaderText = "Name";
             dataGridView1.Columns["Number"].HeaderText = "Number";
@@ -46,12 +51,12 @@ namespace SubscribersApp
         }
 
         // displays the amount of subscribers in range of specified years
-        private void button_rangeByYears_Click(object sender, EventArgs e)        
+        private void button_rangeByYears_Click(object sender, EventArgs e)
         {
-            int count = SubscribersList.Where(s => s.Year<=Convert.ToInt32(textBox_to.Text)&&s.Year>=Convert.ToInt32(textBox_from.Text)).Count();
+            int count = SubscribersList.Where(s => s.Year <= Convert.ToInt32(textBox_to.Text) && s.Year >= Convert.ToInt32(textBox_from.Text)).Count();
             MessageBox.Show(Convert.ToString(count));
         }
-        
+
         // displays the amount of subscribers with debt
         private void button_showDebt_Click(object sender, EventArgs e)
         {
@@ -92,9 +97,9 @@ namespace SubscribersApp
 
         // save as Xml file
         private void saveWithXMLToolStripMenuItem_Click(object sender, EventArgs e)
-        {      
+        {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 saveToXMLDocument(saveFileDialog.FileName);
         }
 
@@ -117,7 +122,7 @@ namespace SubscribersApp
             }
         }
 
-        // save as binary file
+        // open binary file
         private void openWithBinaryFormatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -134,7 +139,7 @@ namespace SubscribersApp
             }
         }
 
-        // open binary file
+        // save binary file
         private void saveWithBinaryFormatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
@@ -146,6 +151,92 @@ namespace SubscribersApp
                 bf.Serialize(fs, SubscribersList);
                 fs.Close();
             }
+        }
+
+        // save Excel
+        private void saveToExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Excel.Application exApp = new Excel.Application();
+            exApp.Workbooks.Add();
+            Excel.Worksheet wsh = (Excel.Worksheet)exApp.ActiveSheet;
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                {
+                    wsh.Cells[i + 1, j + 1] = dataGridView1[j, i].Value.ToString();
+                }
+            }
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                exApp.Application.ActiveWorkbook.SaveAs(saveFileDialog.FileName, Type.Missing,
+                Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlNoChange,
+                Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            }
+            //exApp.Application.ActiveWorkbook.Close(false);
+            exApp.Application.Quit();
+        }
+
+        private void openWithExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Excel.Application exApp = new Excel.Application();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                exApp.Workbooks.Open(openFileDialog.FileName,
+            Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+            Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+            Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+            Type.Missing, Type.Missing);    
+            }
+            exApp.Visible = true;
+            
+            exApp.Application.ActiveWorkbook.Close(false);
+            exApp.Application.Quit();
+
+        }
+        
+        private async void saveAsJSONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var jsonFormatter = new DataContractJsonSerializer(typeof(List<Subscriber>));
+                using (FileStream file = new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate))
+                {
+                    jsonFormatter.WriteObject(file, SubscribersList);
+                }
+            }
+
+        }
+        
+        private async void openWithJSONToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            dataGridView1.Rows.Clear();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var jsonFormatter = new DataContractJsonSerializer(typeof(List<Subscriber>));
+                using (FileStream file = new FileStream(openFileDialog.FileName, FileMode.OpenOrCreate))
+                {
+                    SubscribersList = jsonFormatter.ReadObject(file) as List<Subscriber>;
+                    if (SubscribersList != null)
+                    {
+                        for (int i = 0; i < SubscribersList.Count; i++)
+                        {
+                            BindSource.Add(SubscribersList[i]);
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -51,10 +51,15 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openWithXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openWithBinaryFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openWithExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveWithXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveWithBinaryFormatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label6 = new System.Windows.Forms.Label();
+            this.openWithJSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsJSONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -239,7 +244,9 @@
             // 
             this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openWithXMLToolStripMenuItem,
-            this.openWithBinaryFormatToolStripMenuItem});
+            this.openWithBinaryFormatToolStripMenuItem,
+            this.openWithExcelToolStripMenuItem,
+            this.openWithJSONToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.openToolStripMenuItem.Text = "Open";
@@ -258,11 +265,20 @@
             this.openWithBinaryFormatToolStripMenuItem.Text = "Open with BinaryFormat";
             this.openWithBinaryFormatToolStripMenuItem.Click += new System.EventHandler(this.openWithBinaryFormatToolStripMenuItem_Click);
             // 
+            // openWithExcelToolStripMenuItem
+            // 
+            this.openWithExcelToolStripMenuItem.Name = "openWithExcelToolStripMenuItem";
+            this.openWithExcelToolStripMenuItem.Size = new System.Drawing.Size(306, 34);
+            this.openWithExcelToolStripMenuItem.Text = "Open with Excel";
+            this.openWithExcelToolStripMenuItem.Click += new System.EventHandler(this.openWithExcelToolStripMenuItem_Click);
+            // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveWithXMLToolStripMenuItem,
-            this.saveWithBinaryFormatToolStripMenuItem});
+            this.saveWithBinaryFormatToolStripMenuItem,
+            this.saveToExcelToolStripMenuItem,
+            this.saveAsJSONToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.saveToolStripMenuItem.Text = "Save";
@@ -281,6 +297,13 @@
             this.saveWithBinaryFormatToolStripMenuItem.Text = "Save with BinaryFormat";
             this.saveWithBinaryFormatToolStripMenuItem.Click += new System.EventHandler(this.saveWithBinaryFormatToolStripMenuItem_Click);
             // 
+            // saveToExcelToolStripMenuItem
+            // 
+            this.saveToExcelToolStripMenuItem.Name = "saveToExcelToolStripMenuItem";
+            this.saveToExcelToolStripMenuItem.Size = new System.Drawing.Size(299, 34);
+            this.saveToExcelToolStripMenuItem.Text = "Save to Excel";
+            this.saveToExcelToolStripMenuItem.Click += new System.EventHandler(this.saveToExcelToolStripMenuItem_Click);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -290,11 +313,36 @@
             this.label6.TabIndex = 19;
             this.label6.Text = "Name";
             // 
+            // openWithJSONToolStripMenuItem
+            // 
+            this.openWithJSONToolStripMenuItem.Name = "openWithJSONToolStripMenuItem";
+            this.openWithJSONToolStripMenuItem.Size = new System.Drawing.Size(306, 34);
+            this.openWithJSONToolStripMenuItem.Text = "Open with JSON";
+            this.openWithJSONToolStripMenuItem.Click += new System.EventHandler(this.openWithJSONToolStripMenuItem_Click);
+            // 
+            // saveAsJSONToolStripMenuItem
+            // 
+            this.saveAsJSONToolStripMenuItem.Name = "saveAsJSONToolStripMenuItem";
+            this.saveAsJSONToolStripMenuItem.Size = new System.Drawing.Size(299, 34);
+            this.saveAsJSONToolStripMenuItem.Text = "Save as JSON";
+            this.saveAsJSONToolStripMenuItem.Click += new System.EventHandler(this.saveAsJSONToolStripMenuItem_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(746, 460);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1141, 609);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -356,6 +404,11 @@
         private System.Windows.Forms.ToolStripMenuItem openWithBinaryFormatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveWithXMLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveWithBinaryFormatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToExcelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openWithExcelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openWithJSONToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsJSONToolStripMenuItem;
+        private System.Windows.Forms.Button button2;
     }
 }
 
